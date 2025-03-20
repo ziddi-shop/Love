@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Love Confession Website | kunal">
+    <meta name="github" content="https://github.com/ziddi-shop">
+    <link rel="website icon" type="png" href="heart.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Love Confession Website | Kunal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        body {
+            background-image: linear-gradient(rgb(206 187 187 / 0%), rgb(255 0 129 / 35%)), url(bgr1.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .wrapper {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            width: 966px;
+            height: 540px;
+            padding: 20px;
+            box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.8), 10px 5px 10px rgba(0, 0, 0, 0.28);
+        }
+        .text {
+            text-align: center;
+            color: red;
+            font-size: 25px;
+            font-family: "Pacifico", cursive;
+        }
+        .text-crush {
+            padding: 15px;
+            color: #87001e;
+            font-size: 1.4rem;
+            line-height: 43px;
+            font-family: 'Pacifico', cursive;
+            white-space: pre-wrap;
+        }
+        #yours {
+            display: none;
+            text-align: right;
+            font-size: 1.2rem;
+            margin-right: 30px;
+            color: #87001e;
+            font-family: 'Pacifico', cursive;
+        }
+        #play-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 0, 129, 0.8);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 768px) {
+            .wrapper {
+                width: 300px;
+                height: 100%;
+            }
+            .text-crush {
+                font-size: 0.8rem;
+                line-height: 23px;
+            }
+            #yours {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="text"><i class="fa-solid fa-heart"></i> To You! <i class="fa-solid fa-heart"></i></div>
+            <div class="text-crush" id="text-crush"></div>
+            <div id="yours">- Yours Kunal 💗</div>
+        </div>
+    </div>
+
+    <audio id="bg-music" src="couple.mp3"></audio>
+    <button id="play-btn" onclick="toggleMusic()">🎶</button>
+
+    <script>
+        const text = `After going through a few broken relationships, I thought I could never love anyone again. I had gotten used to doing everything alone for a very long time. 
+        But then fate brought me to you and I liked you before I even realized it.
+        I couldn't stop myself from talking to you, being close to you. Each day that passed, my feelings grew stronger. 
+        It's really hard to stand in front of you and tell you that I love you. That's why I'm sitting here writing these lines.
+        Will you be my girlfriend, Yen? I love you unconditionally!`;
+        
+        let index = 0;
+        const speed = 50;
+        function typeWriter() {
+            if (index < text.length) {
+                document.getElementById("text-crush").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            } else {
+                document.getElementById("yours").style.display = 'block';
+            }
+        }
+        window.onload = typeWriter;
+        
+        let music = document.getElementById("bg-music");
+        let playBtn = document.getElementById("play-btn");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                playBtn.innerText = "⏸";
+            } else {
+                music.pause();
+                playBtn.innerText = "🎶";
+            }
+        }
+    </script>
+</body>
+</html>
